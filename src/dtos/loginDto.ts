@@ -10,11 +10,7 @@ import {
 	IsValidPasswordConstraint,
 } from '../utils/validation';
 
-export class UserDto {
-	@IsNotEmpty()
-	@IsString()
-	name: string;
-
+export class loginDto {
 	@IsNotEmpty()
 	@IsEmail()
 	@Validate(IsDomainConstraint, ['.com', '.co.uk', '.org', '.net']) // Specify the allowed domain(s)
@@ -26,8 +22,7 @@ export class UserDto {
 	@Validate(IsValidPasswordConstraint)
 	password: string;
 
-	constructor(name: string, email: string, password: string) {
-		this.name = name;
+	constructor(email: string, password: string) {
 		this.email = email;
 		this.password = password;
 	}

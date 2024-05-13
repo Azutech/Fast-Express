@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { validate, ValidationError } from 'class-validator';
 import { UserDto } from '../dtos/usersDto';
+import { hashPassword } from '../utils/hashpassword';
 
 const userClient = new PrismaClient().user;
 
@@ -31,12 +32,14 @@ export const createUser = async (req: Request, res: Response) => {
 			throw new Error('Email already exists');
 		}
 
+		const hash = await hashPassword(userDto.password) as string
+
 		// Create new user
 		const newUser = await userClient.create({
 			data: {
 				name: userDto.name,
 				email: userDto.email,
-				password: userDto.password,
+				password: hash,
 			},
 		});
 
