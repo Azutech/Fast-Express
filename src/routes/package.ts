@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { allPackages, createPackage } from '../controllers/packages';
-import { allPackagesByUser } from '../controllers/packages/allPackagesByUsers';
+import { allPackages, createPackage, deletePackage, allPackagesByUser, updatePackage } from '../controllers/packages';
 
 export const pack: Router = Router();
 
 pack.post('/createPack', createPackage);
 pack.get('/allPackages', allPackages);
 pack.get('/allPackagesByUser', allPackagesByUser);
+pack.put('/updatePackage', updatePackage)
+pack.delete('/removePackage', deletePackage)
