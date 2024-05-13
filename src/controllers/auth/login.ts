@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { validate, ValidationError } from 'class-validator';
-import { LoginDto } from '../dtos/loginDto';
-import { comparePasswords } from '../utils/hashpassword';
-import { createJWT } from '../utils/jwt';
+import { LoginDto } from '../../dtos/loginDto';
+import { comparePasswords } from '../../utils/hashpassword';
+import { createJWT } from '../../utils/jwt';
 
 const userClient = new PrismaClient().user;
 

@@ -19,5 +19,15 @@ model User {
   name     String
   email    String
   password String
+  packages   Package[] // Define the one-to-many relationship
   createdAt DateTime @default(now())
+}
+model Package {
+  id          String    @id @default(uuid())
+  packagename String
+  status      String
+  pickUpDate  DateTime
+  createdAt   DateTime  @default(now())
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
 }

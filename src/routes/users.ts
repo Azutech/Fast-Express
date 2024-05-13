@@ -1,6 +1,6 @@
-import { Router } from "express";
-import { allUsers } from "../controllers";
+import { Router } from 'express';
+import { allUsers } from '../controllers/users';
 
-export const user : Router = Router()
+export const user: Router = Router();
 
-user.get('/allusers', allUsers)
+user.get('/allusers', allUsers);

@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { validate, ValidationError } from 'class-validator';
-import { UserDto } from '../dtos/usersDto';
-import { hashPassword } from '../utils/hashpassword';
+import { UserDto } from '../../dtos/usersDto';
+import { hashPassword } from '../../utils/hashpassword';
 
 const userClient = new PrismaClient().user;
 
