@@ -1,5 +1,3 @@
 import { allUsers } from '../users/allUsers';
 
-
-
-export {  allUsers };
+export { allUsers };
