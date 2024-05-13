@@ -32,7 +32,7 @@ export const createUser = async (req: Request, res: Response) => {
 			throw new Error('Email already exists');
 		}
 
-		const hash = await hashPassword(userDto.password) as string
+		const hash = (await hashPassword(userDto.password)) as string;
 
 		// Create new user
 		const newUser = await userClient.create({

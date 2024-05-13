@@ -10,7 +10,7 @@ import {
 	IsValidPasswordConstraint,
 } from '../utils/validation';
 
-export class loginDto {
+export class LoginDto {
 	@IsNotEmpty()
 	@IsEmail()
 	@Validate(IsDomainConstraint, ['.com', '.co.uk', '.org', '.net']) // Specify the allowed domain(s)
