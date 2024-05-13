@@ -7,15 +7,15 @@ const userClient = new PrismaClient().user;
 // getAllAuthors
 export const allUsers = async (req: Request, res: Response) => {
 	try {
-		const tasks = await userClient.findMany({});
+		const users = await userClient.findMany({});
 
-		if (!tasks || tasks.length === 0) {
+		if (!users || users.length === 0) {
 			throw new Error('Error retrieving tasks');
 		}
 
 		res.status(StatusCodes.OK).json({
-			msg: 'Task retrieved successfully',
-			data: tasks,
+			msg: 'Users retrieved successfully',
+			data: users,
 		});
 	} catch (err: any) {
 		console.error(err.message);
