@@ -9,11 +9,11 @@ const userClient = new PrismaClient().user;
 
 export const createPackage = async (req: Request, res: Response) => {
 	try {
-		const { packagename,  pickUpDate } = req.body;
+		const { packagename, pickUpDate } = req.body;
 
 		const { userId } = req.query;
 
-		const userDto = new PackageDto(packagename,  pickUpDate); // Pass constructor arguments
+		const userDto = new PackageDto(packagename, pickUpDate); // Pass constructor arguments
 
 		const errors: ValidationError[] = await validate(userDto);
 		if (errors.length > 0) {

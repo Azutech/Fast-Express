@@ -1,4 +1,13 @@
-import { IsNotEmpty, IsString, IsDate } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString, IsDateString } from 'class-validator';
+
+export enum PackageStatus {
+	PENDING = 'pending',
+	IN_TRANSIT = 'in_transit',
+	OUT_FOR_DELIVERY = 'available_for_pickup',
+	AVAILABLE_FOR_PICKUP = 'out_for_delivery',
+	SUCCESS = 'success',
+	CANCELLED = 'cancelled',
+}
 
 export class UpdatePackageDto {
 	@IsNotEmpty()
@@ -6,16 +15,20 @@ export class UpdatePackageDto {
 	packagename: string;
 
 	@IsNotEmpty()
-	@IsString()
-	status: string;
+	@IsEnum(PackageStatus)
+	status: PackageStatus;
 
 	@IsNotEmpty()
-	@IsDate()
-	pickUpDate: Date;
+	@IsDateString()
+	pickUpDate: string;
 
-	constructor(packagename: string, status: string, pickUpDate: string) {
+	constructor(
+		packagename: string,
+		status: PackageStatus,
+		pickUpDate: string,
+	) {
 		this.packagename = packagename;
-        this.status = status
-		this.pickUpDate = new Date(pickUpDate);
+		this.status = status;
+		this.pickUpDate = pickUpDate;
 	}
 }

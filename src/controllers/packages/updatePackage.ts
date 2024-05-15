@@ -15,7 +15,11 @@ export const updatePackage = async (req: Request, res: Response) => {
 			throw new Error('Package ID must be a string');
 		}
 
-		const updatePackageDto = new UpdatePackageDto(packagename, status, pickUpDate);
+		const updatePackageDto = new UpdatePackageDto(
+			packagename,
+			status,
+			pickUpDate,
+		);
 
 		const errors: ValidationError[] = await validate(updatePackageDto);
 		if (errors.length > 0) {
@@ -58,4 +62,3 @@ export const updatePackage = async (req: Request, res: Response) => {
 		return res.status(statusCode).json({ error: err.message });
 	}
 };
-
