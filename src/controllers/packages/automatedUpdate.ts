@@ -1,7 +1,9 @@
-import { PrismaClient, PackageStatus } from '@prisma/client'; // Import PackageStatus from PrismaClient
+import { PrismaClient,  } from '@prisma/client'; // Import PackageStatus from PrismaClient
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import cron from 'node-cron';
+import { PackageStatus } from '@prisma/client/'; // Import PackageStatus from PrismaClient runtime
+
 
 const prisma = new PrismaClient();
 
