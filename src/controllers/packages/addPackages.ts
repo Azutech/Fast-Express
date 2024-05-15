@@ -2,18 +2,18 @@ import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { validate, ValidationError } from 'class-validator';
-import { PackageDto } from '../../dtos/packageDto';
+import { PackageDto } from '../../dtos/addPackageDto';
 
 const packageClient = new PrismaClient().package;
 const userClient = new PrismaClient().user;
 
 export const createPackage = async (req: Request, res: Response) => {
 	try {
-		const { packagename, status, pickUpDate } = req.body;
+		const { packagename,  pickUpDate } = req.body;
 
 		const { userId } = req.query;
 
-		const userDto = new PackageDto(packagename, status, pickUpDate); // Pass constructor arguments
+		const userDto = new PackageDto(packagename,  pickUpDate); // Pass constructor arguments
 
 		const errors: ValidationError[] = await validate(userDto);
 		if (errors.length > 0) {
@@ -40,7 +40,6 @@ export const createPackage = async (req: Request, res: Response) => {
 		const createdPackage = await packageClient.create({
 			data: {
 				packagename,
-				status,
 				pickUpDate: new Date(pickUpDate), // Assuming pickUpDate is in a compatible format
 				userId,
 			},

@@ -1,6 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { validate, ValidationError } from 'class-validator';
+import { UpdatePackageDto } from '../../dtos/updatePackage';
+UpdatePackageDto
+
 
 const packageClient = new PrismaClient().package;
 
@@ -11,7 +15,21 @@ export const updatePackage = async (req: Request, res: Response) => {
 
 		if (typeof packageId !== 'string') {
 			throw new Error('Package ID must be a string');
+
 		}
+
+		const updatepackage = new UpdatePackageDto(packagename,  status, pickUpDate);
+
+
+		const errors: ValidationError[] = await validate(updatepackage);
+		if (errors.length > 0) {
+			const errorMessage = errors
+				.map((error) => Object.values(error.constraints ?? {}))
+				.join(', ');
+			throw new Error(errorMessage);
+		}
+
+		
 
 		const packageData = {
 			packagename,

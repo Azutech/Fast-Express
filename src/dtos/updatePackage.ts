@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsDate } from 'class-validator';
 
-export class PackageDto {
+export class UpdatePackageDto {
 	@IsNotEmpty()
 	@IsString()
 	packagename: string;
@@ -15,7 +15,7 @@ export class PackageDto {
 
 	constructor(packagename: string, status: string, pickUpDate: string) {
 		this.packagename = packagename;
-		this.status = status;
+        this.status = status
 		this.pickUpDate = new Date(pickUpDate);
 	}
 }
