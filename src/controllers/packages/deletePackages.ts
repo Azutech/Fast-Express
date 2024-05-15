@@ -6,15 +6,15 @@ const packageClient = new PrismaClient().package;
 
 export const deletePackage = async (req: Request, res: Response) => {
 	try {
-		const { id } = req.query;
+		const { packageId } = req.query;
 
-		if (typeof id !== 'string') {
+		if (typeof packageId !== 'string') {
 			throw new Error('Package ID must be a string');
 		}
 
 		const task = await packageClient.delete({
 			where: {
-				id: id,
+				id: packageId,
 			},
 		});
 
