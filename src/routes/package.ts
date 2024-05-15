@@ -17,5 +17,5 @@ pack.get('/allPackages', authenticateUser, allPackages);
 pack.get('/allPackagesByUser', authenticateUser, allPackagesByUser);
 pack.put('/updatePackage', authenticateUser, updatePackage);
 pack.get('/automatedUpdate', automatedUpdate);
-pack.get('/getPackage', authenticateUser, onePackage)
+pack.get('/getPackage', authenticateUser, onePackage);
 pack.delete('/removePackage', authenticateUser, deletePackage);

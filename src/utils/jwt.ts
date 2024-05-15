@@ -7,7 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET as string;
 
 export const createJWT = (payload: object) => {
 	const secret = JWT_SECRET;
-	const token = jwt.sign(payload, secret, { expiresIn: '2h' });
+	const token = jwt.sign(payload, secret, { expiresIn: '3h' });
 	return token;
 };
 
