@@ -23,7 +23,7 @@ export const dashoard = async (req: CustomRequest, res: Response) => {
 		});
 
 		if (!findUser) {
-			throw new Error('Error retreiving task');
+			throw new Error('Error retreiving User');
 		}
 
 		res.status(StatusCodes.OK).json({
