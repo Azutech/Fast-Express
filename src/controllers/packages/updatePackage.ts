@@ -7,14 +7,16 @@ const packageClient = new PrismaClient().package;
 export const updatePackage = async (req: Request, res: Response) => {
 	try {
 		const { packageId } = req.query;
-		const {  packagename, status, pickUpDate } = req.body;
+		const { packagename, status, pickUpDate } = req.body;
 
 		if (typeof packageId !== 'string') {
 			throw new Error('Package ID must be a string');
 		}
 
 		const packageData = {
-			packagename, status, pickUpDate
+			packagename,
+			status,
+			pickUpDate,
 		};
 
 		const task = await packageClient.update({
@@ -27,7 +29,10 @@ export const updatePackage = async (req: Request, res: Response) => {
 		if (!task) {
 			throw new Error('Error updating tasks');
 		}
-		res.status(StatusCodes.OK).json({ msg: 'Task updated successfully', data: task });
+		res.status(StatusCodes.OK).json({
+			msg: 'Task updated successfully',
+			data: task,
+		});
 	} catch (err: any) {
 		const statusMap: Record<string, number> = {
 			'Error updating tasks': StatusCodes.BAD_GATEWAY,

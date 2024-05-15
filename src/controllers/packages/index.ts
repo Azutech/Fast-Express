@@ -3,7 +3,12 @@ import { allPackages } from './allPackages';
 import { allPackagesByUser } from './allPackagesByUsers';
 import { deletePackage } from './deletePackages';
 import { updatePackage } from './updatePackage';
-updatePackage
+updatePackage;
 
-
-export { createPackage, allPackages, deletePackage, allPackagesByUser, updatePackage};
+export {
+	createPackage,
+	allPackages,
+	deletePackage,
+	allPackagesByUser,
+	updatePackage,
+};

@@ -4,8 +4,6 @@ import { StatusCodes } from 'http-status-codes';
 
 const packageClient = new PrismaClient().package;
 
-
-
 export const deletePackage = async (req: Request, res: Response) => {
 	try {
 		const { id } = req.query;
