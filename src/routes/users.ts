@@ -5,4 +5,4 @@ import { authenticateUser } from '../middlewares/authorizedToken';
 export const user: Router = Router();
 
 user.get('/allusers', allUsers);
-user.get('/dashboard',  authenticateUser, dashoard);
+user.get('/dashboard', authenticateUser, dashoard);

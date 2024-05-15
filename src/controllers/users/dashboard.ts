@@ -10,16 +10,15 @@ export const dashoard = async (req: CustomRequest, res: Response) => {
 	try {
 		const { user } = req.query;
 
-		console.log(user)
+		console.log(user);
 
 		if (typeof user !== 'string') {
 			throw new Error('user ID must be a string');
 		}
 
-
 		const findUser = await userClient.findUnique({
 			where: {
-				id: user
+				id: user,
 			},
 		});
 
