@@ -1,3 +1,4 @@
 import { allUsers } from '../users/allUsers';
+import { dashoard } from './dashboard';
 
-export { allUsers };
+export { allUsers, dashoard };

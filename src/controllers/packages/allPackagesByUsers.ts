@@ -6,18 +6,16 @@ const packageClient = new PrismaClient().package;
 
 export const allPackagesByUser = async (req: Request, res: Response) => {
 	try {
-
-        const { userId } = req.query;
+		const { userId } = req.query;
 
 		if (typeof userId !== 'string') {
 			throw new Error('Task ID must be a string');
 		}
 		const packages = await packageClient.findMany({
-
-            where : {
-                userId : userId
-            }
-        });
+			where: {
+				userId: userId,
+			},
+		});
 
 		if (!packages || packages.length === 0) {
 			throw new Error('Error retrieving Packages');

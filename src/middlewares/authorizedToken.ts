@@ -35,4 +35,3 @@ export const authenticateUser = async (
 		return res.status(statusCode).json({ error: err.message });
 	}
 };
-
