@@ -27,6 +27,9 @@ enum PackageStatus {
   pending
   success
   cancelled
+  in_transit
+  out_for_delivery
+  available_for_pickup
 }
 
 // Update the Package model to use the enum

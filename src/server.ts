@@ -9,7 +9,7 @@ import { PORT } from './utils/config';
 const server: Application = express();
 
 server.use(express.json());
- //
+//
 server.use('/api/v1', routes);
 server.use(express.urlencoded({ extended: true }));
 

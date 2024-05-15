@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 
 const packageClient = new PrismaClient().package;
 
-export const deletePackage = async (req: Request, res: Response) => {
+export const onePackage = async (req: Request, res: Response) => {
 	try {
 		const { packageId } = req.query;
 
@@ -12,23 +12,24 @@ export const deletePackage = async (req: Request, res: Response) => {
 			throw new Error('Package ID must be a string');
 		}
 
-		const task = await packageClient.delete({
+		const findPackage = await packageClient.findUnique({
 			where: {
 				id: packageId,
 			},
 		});
 
-		if (!task) {
-			throw new Error('Error delete packages');
+		if (!findPackage) {
+			throw new Error('Error retreiving Package');
 		}
 
-		return res
-			.status(StatusCodes.OK)
-			.json({ msg: 'Package deleted successfully', data: task });
+		res.status(StatusCodes.OK).json({
+			msg: 'Package task retreived successfully',
+			data: findPackage,
+		});
 	} catch (err: any) {
 		console.error(err.message);
 		const statusMap: Record<string, number> = {
-			'Error delete packages': StatusCodes.BAD_REQUEST,
+			'Error retrieving task': StatusCodes.BAD_REQUEST,
 		};
 
 		const statusCode = statusMap[err.message]
